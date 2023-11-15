@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "B-Wallet | TL Bank | Transactions",
-  description: "By Bankless DAO",
+  title: "B-Wallet | tlBANK | Transactions",
+  description: "By BanklessDAO",
 };
 
 export default function TlBankTranLayout({ children }) {

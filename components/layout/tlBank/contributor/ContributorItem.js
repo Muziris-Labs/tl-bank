@@ -69,7 +69,7 @@ const ContributorItem = ({ contributor }) => {
         className="rounded-md bg-black/40 p-2"
         onClick={() => {
           dispatch(setWalletAddress(contributor.pubkey));
-          router.push("/tlBank/dashboard");
+          router.push("/dashboard");
         }}
       >
         <PaperAirplaneIcon className="h-5 w-5 text-[#FCADFF]" />

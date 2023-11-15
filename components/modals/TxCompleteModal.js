@@ -7,11 +7,16 @@ import {
   DialogFooter,
   IconButton,
 } from "@material-tailwind/react";
-import { PaperAirplaneIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowTopRightOnSquareIcon,
+  PaperAirplaneIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import { handleTxCompleteModal } from "@/redux/slice/modalSlice";
+import { useNetwork } from "wagmi";
 
 const TxCompleteModal = () => {
   const isOpen = useSelector((state) => state.modal.txCompleteModal);
@@ -19,6 +24,9 @@ const TxCompleteModal = () => {
   const transaction = useSelector(
     (state) => state.selected.executedTransaction,
   );
+  const status = useSelector((state) => state.tlbank.status);
+  const { chain } = useNetwork();
+  const safeAddress = useSelector((state) => state.wallet.safe);
 
   const handleOpen = () => {
     dispatch(handleTxCompleteModal());
@@ -64,10 +72,28 @@ const TxCompleteModal = () => {
         </div>
       </DialogBody>
 
-      <DialogFooter className="justify-center pb-8 font-grotesque">
+      <DialogFooter className="flex flex-col justify-center gap-2 pb-8 font-grotesque">
         <div className="text-base font-medium text-[#FCADFF]">
-          Transaction has been Initiated
+          {status === "ORG"
+            ? "Collect All Signature to confirm the mint"
+            : "Minting in progress"}
         </div>
+        {status === "ORG" && (
+          <div
+            className="text-base font-medium text-[#51ff76] underline hover:cursor-pointer"
+            onClick={() => {
+              window.open(
+                `https://app.safe.global/transactions/queue?safe=${
+                  chain === 1 ? "eth:" : "gor:"
+                }${safeAddress}`,
+                "_blank",
+              );
+            }}
+          >
+            Go to your Safe{" "}
+            <ArrowTopRightOnSquareIcon className="mb-1 ml-1 inline-block h-4 w-4 text-[#9ffcb3]" />
+          </div>
+        )}
       </DialogFooter>
     </Dialog>
   );

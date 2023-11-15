@@ -25,7 +25,7 @@ const TransactionFooter = ({ transaction }) => {
         />
 
         <div>
-          <h2 className="font-medium text-gray-200">TL Bank</h2>
+          <h2 className="font-medium text-gray-200">tlBANK</h2>
           <h2 className="text-sm text-gray-400">BanklessDAO</h2>
         </div>
       </div>

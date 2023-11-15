@@ -28,6 +28,7 @@ import {
 } from "@/redux/slice/modalSlice";
 import { setSignature } from "@/redux/slice/walletSlice";
 import { setExecutedTransaction } from "@/redux/slice/selectedSlice";
+import { emptyQueue } from "@/redux/slice/tlbankSlice";
 
 const DefaultButton = ({
   variant,
@@ -279,6 +280,7 @@ const ExecuteTransactionBtn = () => {
   const tlBankAddress = useSelector((state) => state.tlbank.TLBANK);
   const bankAddress = useSelector((state) => state.tlbank.BANK);
   const safeAddress = useSelector((state) => state.wallet.safe);
+  const dispatch = useDispatch();
 
   const handleClick = async () => {
     let txs = [];
@@ -312,7 +314,7 @@ const ExecuteTransactionBtn = () => {
       await executeSafeTransaction(safeAddress, tos, txs);
       await addTransaction(
         "Queue Transfer",
-        `${totalAmount} Banks`,
+        `${totalAmount} BANKS`,
         `${txs.length - 1} Contributors`,
         safeAddress,
         "Organisation",
@@ -320,10 +322,11 @@ const ExecuteTransactionBtn = () => {
       dispatch(
         setExecutedTransaction({
           status: "Queue Transfer",
-          price: `${totalAmount} Banks`,
+          price: `${totalAmount} BANKS`,
         }),
       );
       dispatch(handleTxCompleteModal());
+      dispatch(emptyQueue());
     } catch (error) {
       console.log(error);
     }

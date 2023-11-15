@@ -14,7 +14,7 @@ const OrganisationItem = ({ src, name, label, pubKey }) => {
       onClick={() => {
         dispatch(setSafe(pubKey));
         dispatch(setSafeName(label));
-        router.push("/tlBank/dashboard/");
+        router.push("/dashboard/");
       }}
     >
       <div className="flex w-44 items-center gap-2">

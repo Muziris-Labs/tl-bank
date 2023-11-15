@@ -93,7 +93,7 @@ const PayContributor = () => {
       if (secondResponse) {
         await addTransaction(
           "Transfer",
-          `${quantity} Banks`,
+          `${quantity} BANKS`,
           walletAddress,
           address,
           "Contributor",
@@ -101,7 +101,7 @@ const PayContributor = () => {
         dispatch(
           setExecutedTransaction({
             status: "Transfer",
-            price: `${quantity} Banks`,
+            price: `${quantity} BANKS`,
           }),
         );
         dispatch(handleTxCompleteModal());
@@ -115,7 +115,7 @@ const PayContributor = () => {
         );
         await addTransaction(
           "Transfer",
-          `${quantity} Banks`,
+          `${quantity} BANKS`,
           walletAddress,
           safeAddress,
           "Organisation",
@@ -123,7 +123,7 @@ const PayContributor = () => {
         dispatch(
           setExecutedTransaction({
             status: "Queue Transfer",
-            price: `${quantity} Banks`,
+            price: `${quantity} BANKS`,
           }),
         );
         dispatch(handleTxCompleteModal());

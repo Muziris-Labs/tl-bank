@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "B-Wallet | TL Bank | Dashboard",
-  description: "By Bankless DAO",
+  title: "B-Wallet | tlBANK | Dashboard",
+  description: "By BanklessDAO",
 };
 
 export default function TlBankDashLayout({ children }) {

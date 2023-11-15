@@ -30,13 +30,13 @@ export function ToggleDialer() {
     if (!chain) return;
     if (chain.id === 1) {
       if (status === "ORG") {
-        router.push("/tlBank/organisations");
+        router.push("/organisations");
       }
       dispatch(setMainnet());
     }
     if (chain.id === 5) {
       if (status === "ORG") {
-        router.push("/tlBank/organisations");
+        router.push("/organisations");
       }
       dispatch(setGoerli());
     }

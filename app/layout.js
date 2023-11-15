@@ -84,8 +84,11 @@ const neue = localFont({
 });
 
 export const metadata = {
-  title: "B-Wallet | TL Bank",
-  description: "By Bankless DAO",
+  title: "B-Wallet | tlBank",
+  description: "By BanklessDAO",
+  icons: {
+    shortcut: [{ url: "/favicon.ico", sizes: "16x16", type: "image/ico" }],
+  },
 };
 
 export default function RootLayout({ children }) {
